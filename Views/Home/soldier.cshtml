@@ -1,0 +1,91 @@
+﻿@{
+    ViewData["Title"] = "Privaddcy Policy";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soldier's Dashboard</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://t4.ftcdn.net/jpg/02/76/95/73/360_F_276957345_eogIwZ41gNjEcXbnFzU0icFlfwX8EQEj.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
+        h1, h3 {
+            color: green;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        p {
+            font-size: 16px;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        #soldier-info, #assigned-task {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            margin: 20px auto;
+            width: 80%;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        button {
+            background-color: #4d5c3d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 16px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+            button:hover {
+                background-color: #5e7250;
+            }
+    </style>
+</head>
+<body>
+
+    <h1>Soldier's Dashboard</h1>
+    <div id="soldier-info">
+        <h3>Soldier: John Doe</h3>
+        <p><strong>Phone:</strong> 123-456-7890</p>
+        <p><strong>Address:</strong> 123 Main St</p>
+        <p><strong>Blood Type:</strong> O+</p>
+        <p><strong>Rank:</strong> Soldier</p>
+    </div>
+
+    <div id="assigned-task">
+        <h3>Assigned Task</h3>
+        <p id="task-details">No task assigned yet.</p>
+    </div>
+
+    <button onclick="fetchTask()">Fetch Task</button>
+
+    <script>
+        function fetchTask() {
+            const assignedTask = localStorage.getItem('assignedTask');
+            const assignedTo = localStorage.getItem('assignedTo');
+
+            if (!assignedTask || !assignedTo) {
+                alert('No task assigned.');
+                return;
+            }
+
+            const taskDetails = document.getElementById('task-details');
+            taskDetails.textContent = `${assignedTo}: ${assignedTask}`;
+        }
+    </script>
+
+</body>
+</html>
